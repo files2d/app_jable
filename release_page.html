@@ -311,6 +311,53 @@
         }
 
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      /*Swal.fire({
+        title: '<strong><h3>BK官方群组</h3></strong>',
+        //imageUrl: 'https://unsplash.it/400/200',
+        imageWidth: 200,
+        position: "top-end",
+        imageHeight: 20,
+        imageAlt: 'Custom image',
+        width: 200,
+        padding: '3em',
+        color: '#e63e91',
+        html:
+          '👇👇👇',
+        background: '#fff url(https://source.unsplash.com/640x360/?starry-night)',
+        confirmButtonText:
+          '<a href="https://t.me/+XIJgWWhQLqkxM2Mx">加入</a>'
+      })*/
+      const ToastWithButton = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 6000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+
+        ToastWithButton.fire({
+            icon: "success",
+            //title: "👇嗶咔TG公告板👇",
+            html: `
+                <h href="https://t.me/+c_JwdsMGkkgwZTA1" target="_blank">
+                <div style="text-align: center;">
+                    <a href="https://t.me/+c_JwdsMGkkgwZTA1" target="_blank" style="text-decoration: none;">
+                        <button style="padding: 10px 20px; background-color: #7e5fd9; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            加入👉欢迎加入J.TV群组👈
+                        </button>
+                    </a>
+                </div>
+            `
+        });
+
+    </script>
     
     
 </html>

@@ -31,6 +31,343 @@
             height: 5px;
             z-index: 999; /* 确保蓝线在header下面 */
         }
+        @import "fontawesome-all.min.css";
+        @import "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic";
+        
+        /* Basic Reset */
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        
+        html {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #f7f7f7 url(assets/bg01.png);
+            color: #474747;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 16pt;
+            font-weight: 300;
+            line-height: 1.65em;
+            -webkit-text-size-adjust: none;
+        }
+        
+        a {
+            transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+            color: #37c0fb;
+            text-decoration: none;
+            border-bottom: dotted 1px;
+        }
+        
+        a:hover {
+            border-bottom-color: transparent;
+        }
+        
+        strong, b {
+            font-weight: 600;
+        }
+        
+        em, i {
+            font-style: italic;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            color: inherit;
+            font-weight: 600;
+            line-height: 1.75em;
+            margin-bottom: 1em;
+        }
+        
+        h2 {
+            font-size: 1.2em;
+            letter-spacing: -0.025em;
+        }
+        
+        h3 {
+            font-size: 1.2em;
+            letter-spacing: -0.025em;
+        }
+        
+        p, ul, ol, dl, table, blockquote {
+            margin-bottom: 2em;
+        }
+        
+        blockquote {
+            border-left: solid 0.5em #e0e0e0;
+            font-style: italic;
+            padding: 1em 0 1em 2em;
+        }
+        
+        hr {
+            border-top: solid 1px #e0e0e0;
+            margin-bottom: 1.5em;
+        }
+        
+        /* Container */
+        .container {
+            margin: 0 auto;
+            max-width: 100%;
+            width: 1400px;
+        }
+        
+        @media screen and (max-width: 1680px) {
+            .container {
+                width: 1200px;
+            }
+        }
+        
+        @media screen and (max-width: 1280px) {
+            .container {
+                width: 960px;
+            }
+        }
+        
+        @media screen and (max-width: 980px) {
+            .container {
+                width: 95%;
+            }
+        }
+        
+        @media screen and (max-width: 840px) {
+            .container {
+                width: 95%;
+            }
+        }
+        
+        @media screen and (max-width: 736px) {
+            .container {
+                width: 90%;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .container {
+                width: 100%;
+            }
+        }
+        
+        /* Flexbox Grid */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            box-sizing: border-box;
+            align-items: stretch;
+        }
+        
+        .row > * {
+            box-sizing: border-box;
+        }
+        
+        .row.gtr-uniform > *:last-child {
+            margin-bottom: 0;
+        }
+        
+        .row.aln-left {
+            justify-content: flex-start;
+        }
+        
+        .row.aln-center {
+            justify-content: center;
+        }
+        
+        .row.aln-right {
+            justify-content: flex-end;
+        }
+        
+        .row.aln-top {
+            align-items: flex-start;
+        }
+        
+        .row.aln-middle {
+            align-items: center;
+        }
+        
+        .row.aln-bottom {
+            align-items: flex-end;
+        }
+        
+        .row > .imp {
+            order: -1;
+        }
+        
+        /* Column Sizes */
+        [class*="col-"] {
+            width: 100%;
+        }
+        
+        .row > .col-1 {
+            width: 8.33333%;
+        }
+        
+        .row > .col-2 {
+            width: 16.66667%;
+        }
+        
+        .row > .col-3 {
+            width: 25%;
+        }
+        
+        .row > .col-4 {
+            width: 33.33333%;
+        }
+        
+        .row > .col-5 {
+            width: 41.66667%;
+        }
+        
+        .row > .col-6 {
+            width: 50%;
+        }
+        
+        .row > .col-7 {
+            width: 58.33333%;
+        }
+        
+        .row > .col-8 {
+            width: 66.66667%;
+        }
+        
+        .row > .col-9 {
+            width: 75%;
+        }
+        
+        .row > .col-10 {
+            width: 83.33333%;
+        }
+        
+        .row > .col-11 {
+            width: 91.66667%;
+        }
+        
+        .row > .col-12 {
+            width: 100%;
+        }
+        
+        /* Offsets */
+        [class*="off-"] {
+            margin-left: 0;
+        }
+        
+        .row > .off-1 {
+            margin-left: 8.33333%;
+        }
+        
+        .row > .off-2 {
+            margin-left: 16.66667%;
+        }
+        
+        .row > .off-3 {
+            margin-left: 25%;
+        }
+        
+        .row > .off-4 {
+            margin-left: 33.33333%;
+        }
+        
+        .row > .off-5 {
+            margin-left: 41.66667%;
+        }
+        
+        .row > .off-6 {
+            margin-left: 50%;
+        }
+        
+        .row > .off-7 {
+            margin-left: 58.33333%;
+        }
+        
+        .row > .off-8 {
+            margin-left: 66.66667%;
+        }
+        
+        .row > .off-9 {
+            margin-left: 75%;
+        }
+        
+        .row > .off-10 {
+            margin-left: 83.33333%;
+        }
+        
+        .row > .off-11 {
+            margin-left: 91.66667%;
+        }
+        
+        .row > .off-12 {
+            margin-left: 100%;
+        }
+        
+        /* Gutters */
+        .row.gtr-0 {
+            margin-top: 0;
+            margin-left: 0;
+        }
+        
+        .row.gtr-0 > * {
+            padding: 0 0 0 0;
+        }
+        
+        .row.gtr-0.gtr-uniform {
+            margin-top: 0;
+        }
+        
+        .row.gtr-0.gtr-uniform > * {
+            padding-top: 0;
+        }
+        
+        /* Add other gutter sizes as needed */
+        
+        .row.gtr-25 {
+            margin-top: -12.5px;
+            margin-left: -12.5px;
+        }
+        
+        .row.gtr-25 > * {
+            padding: 12.5px 0 0 12.5px;
+        }
+        
+        .row.gtr-25.gtr-uniform {
+            margin-top: -12.5px;
+        }
+        
+        .row.gtr-25.gtr-uniform > * {
+            padding-top: 12.5px;
+        }
+        
+        .row.gtr-50 {
+            margin-top: -25px;
+            margin-left: -25px;
+        }
+        
+        .row.gtr-50 > * {
+            padding: 25px 0 0 25px;
+        }
+        
+        .row.gtr-50.gtr-uniform {
+            margin-top: -25px;
+        }
+        
+        .row.gtr-50.gtr-uniform > * {
+            padding-top: 25px;
+        }
+        
+        #logo {
+            display: inline-block;
+        }
+        
+        #img {
+            border-radius: 15px; /* 调整logo圆角 */
+        }
+        #logo {
+            margin-bottom: -10px; /* 添加底部边距，调整数值以达到所需效果 */
+        }
 
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">

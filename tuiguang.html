@@ -322,17 +322,40 @@
         <h1>Jable.tv APP</h1>
         <div class="link">
             <ul>
-                <li><a href="https://www.jable.tv/" target="_blank">Jable.tv 官網</a></li>
-                <li><a href="https://play.google.com/store/apps/details?id=com.jable.tv" target="_blank">Android 版下载</a></li>
-                <li><a href="https://apps.apple.com/us/app/jable-tv/id1535156125" target="_blank">iOS 版下载</a></li>
+                <li><a href="/" target="_blank">Jable.tv 官網</a></li>
+                <li><a id="download-link" class="btn btn-primary btn-lg">下載APK</a></li>
+                <li><a id="backup-download-link" class="btn btn-primary btn-lg">備用下載</a></li>
+                <li><a href="/" target="_blank">iOS 版下载</a></li>
             </ul>
         </div>
+
+        <div class="mt-5">
+            <h2>推廣後獲取邀請碼</h2>
+            <p>Jables.TV，複製文本，進行推廣，任何社交平臺均可。</p>
+            <p>推薦在常見社交軟體如“X(Twitter)”|“Weibo”|“Douban”等平臺推廣。</p>
+            
+        </div>
+
+        <div class="button-container" id="submit-button-container" style="display: none;">
+            <button class="submit-button" onclick="submitInfo()">提交推廣後的信息</button>
+        </div>
+
         <div class="text-box" id="sampleBox">
-            <p>这里可以放置一些内容。</p>
-            <div class="button-container">
-                <button class="example-button" onclick="copyToClipboard('#sampleBox')">复制示例</button>
-                <button class="example-button" onclick="generateExampleText()">生成示例</button>
-            </div>
+            <p id="random-text">歡迎來到JablesTV！</p>
+        </div>
+        <div class="button-container">
+            <button class="copy-button" onclick="copyText()">一鍵複製</button>
+            <button class="example-button" onclick="showExample()">示例推廣</button>
+        </div>
+        <p id="random-text-tag" style="display: none;"></p>
+    </div>
+
+    <!-- 彈窗 -->
+    <div id="exampleModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeExample()">&times;</span>
+            <img src="./src/example.png" alt="示例推廣" style="max-width: 100%; height: auto;border-radius: 5px;">
+            <span>示例圖片</span>
         </div>
     </div>
     
@@ -342,54 +365,89 @@
             <p>你的代码已经复制到剪贴板！</p>
         </div>
     </div>
-    <script>
-        // 获取模态框
-        var modal = document.getElementById("myModal");
+   <script>
+        // 设定下载链接变量
+        const downloadLink = "https://cf.ghproxy.cc/https://github.com/files2d/app_jable/releases/download/app/jable_tv_release.apk";
+        const backupDownloadLink = "./src/jable_tv_release.apk";
+        // 设置下载链接的href属性
+        document.getElementById('download-link').href = downloadLink;
+        document.getElementById('backup-download-link').href = backupDownloadLink;
+        
+        // 随机文案
+        const commonText = "#Jable #JableTV";
+        const linkTexts = [
+            "https://app.jabletvs.xyz/",
+            "https://app.jabletvs.xyz/release_page.html"
+        ];
+        const texts = [
+            "免費高清AV在線看，無需下載看到飽。 \n 网站：",
+            "高清AV, 免費AV, JAV線上看 \n 网站：",
+            "哈哈！被我摸索到免費AV網站了！小黄片的世界我来了！！！ \n 网站",
+            "高清AV, 免費JAV, 手機AV \n 网站",
+            "免費高清AV網站歡迎你，哈哈哈哈 \n 网站"
+        ];
 
-        // 获取 <span> 元素，设置点击事件以关闭模态框
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
+        const otherTexts = [
+            "[最好再配張圖]"
+        ];
+
+        // 随机显示文案
+        const randomText = texts[Math.floor(Math.random() * texts.length)];
+        const randomlinkTexts = linkTexts[Math.floor(Math.random() * linkTexts.length)];
+        const finalText = `${commonText} ${randomText} ${randomlinkTexts} ${otherTexts}`;
+        document.getElementById('random-text').innerText = randomText + randomlinkTexts;
+        document.getElementById('random-text-tag').innerText = finalText;
+        // 一键复制功能
+        function copyText() {
+            const textToCopy = document.getElementById('random-text-tag').innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                alert('文案:「' + commonText + randomText + '」已复制');
+                document.getElementById('submit-button-container').style.display = 'flex';
+            }).catch(err => {
+                console.error('复制失败！', err);
+            });
         }
 
-        // 点击模态框外的区域时关闭模态框
+        // 显示示例弹窗
+        function showExample() {
+            document.getElementById('exampleModal').style.display = "block";
+        }
+
+        // 关闭示例弹窗
+        function closeExample() {
+            document.getElementById('exampleModal').style.display = "none";
+        }
+
+        // 点击弹窗外部关闭弹窗
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == document.getElementById('exampleModal')) {
+                document.getElementById('exampleModal').style.display = "none";
             }
         }
+        // 提交推广信息
+        function submitInfo() {
+            alert('将跳转到提交页面！');
+            window.open('https://submit.haitangwx.xyz/', '_blank');
+        }
+        //自动滑动到底部
+        function scrollToBottom() {
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const bottom = document.body.scrollHeight - window.innerHeight;
+            const scrollStep = 5; // 滚动步长，可以根据需要调整
+            const scrollInterval = 20; // 滚动间隔，可以根据需要调整
 
-        // 将内容复制到剪贴板的函数
-        function copyToClipboard(selector) {
-            var element = document.querySelector(selector);
-            var range = document.createRange();
-            range.selectNodeContents(element);
-            var selection = window.getSelection();
-            selection.removeAllRanges();
-            selection.addRange(range);
-            try {
-                document.execCommand('copy');
-                showModal();
-            } catch (err) {
-                alert('复制失败，请手动复制。');
-            }
+            const scroll = setInterval(function() {
+                if (currentScroll < bottom) {
+                    window.scrollBy(0, scrollStep);
+                    currentScroll += scrollStep;
+                } else {
+                    clearInterval(scroll);
+                }
+            }, scrollInterval);
         }
 
-        // 显示模态框的函数
-        function showModal() {
-            modal.style.display = "block";
-        }
-
-        // 生成示例文本的函数
-        function generateExampleText() {
-            var sampleBox = document.getElementById('sampleBox');
-            sampleBox.innerHTML = `
-                <p>这里是新生成的示例内容。</p>
-                <div class="button-container">
-                    <button class="example-button" onclick="copyToClipboard('#sampleBox')">复制示例</button>
-                    <button class="example-button" onclick="generateExampleText()">生成示例</button>
-                </div>
-            `;
+        window.onload = function() {
+            scrollToBottom();
         }
     </script>
 </body>
